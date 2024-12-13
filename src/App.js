@@ -99,10 +99,8 @@ const App = () => {
         <Route
           path="/"
           element={
-            <div className="app-container">
-            <h1></h1>
-      <img src="/congress.jpeg" alt="국회의사당" className="image-responsive" />
-              <h1></h1>
+            <div className="app-container">            
+      <img src="/congress.jpeg" alt="국회의사당" className="image-responsive" />              
               <Filters
                 filters={filters}
                 handleFilterChange={handleFilterChange}
