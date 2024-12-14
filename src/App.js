@@ -31,18 +31,21 @@ const App = () => {
   const membersPerPage = 15;
 
   const handleLogin = (credentials) => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (
-      storedUser &&
-      storedUser.email === credentials.email &&
-      storedUser.password === credentials.password
-    ) {
-      setIsAuthenticated(true);
-      alert("로그인 성공!");
-    } else {
-      alert("로그인 실패! 이메일 또는 비밀번호를 확인해주세요.");
-    }
-  };
+  const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const user = storedUsers.find(
+    (user) => user.email === credentials.email && user.password === credentials.password
+  );
+
+  console.log("handleLogin 호출됨", credentials); // 호출 확인
+
+  if (user) {
+    setIsAuthenticated(true);
+    alert("로그인 성공!");
+  } else {
+    alert("로그인 실패! 이메일 또는 비밀번호를 확인해주세요.");
+  }
+};
+
 
   const applyFilters = () => {
     const filtered = members.filter((member) => {
