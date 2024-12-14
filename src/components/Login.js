@@ -1,13 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // useNavigate 가져오기
 import "./logsign.css";
 
 const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // useNavigate 초기화
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 기본 동작 방지
+    console.log("폼 제출 이벤트 발생"); // 디버깅 확인
+
     onLogin({ email, password });
+
+    // 로그인 성공 후 메인 페이지로 이동
+    navigate("/");
   };
 
   return (
